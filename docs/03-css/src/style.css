@@ -1,4 +1,3 @@
-/* 
 body {
 	font-family: helvetica, arial, sans-serif;
 }
@@ -16,36 +15,40 @@ h1 {
 	right: 0px;
 }
 
-.container {
+.container { /* left and right containers for plants */
 	background-color: #eee;
 	width: 15%;
 	top: 0px;
 	position: absolute;
 	height: 100%;
-	padding: 10px;
+	padding: 10px; /* padding is the space between the content and the border of the container */
 }
-
-.plant-holder {
+/* .plant disappears when .plant-holder is positioned absolute due to .plant being absolute,
+   but not having a specific position to reference; 
+	 it collapses or appears in an invisible location. */
+.plant-holder { /* if confused on height and width, inspect the element in the browser 
+								and see what it is actually doing */
 	position: relative;
 	height: 13%;
-	left: -10px;
+	width: 100%; /* 100% of the container width */
 }
-
+/* plants line up in a line vertically due to HTML doing that automatically */
 .plant {
 	position: absolute;
-	max-width: 150%;
+	max-width: 150%; /* scales to fit within .plant-holder, but won't be larger than 150% of its original size */
 	max-height: 150%;
-	z-index: 2;
+	z-index: 2; /* layering: plant is above jar */
 }
 
 .jar-walls {
 	height: 80%;
 	width: 60%;
 	background: #d1e1df;
-	border-radius: 1rem;
+	border-radius: 1rem; /* rounded corners; rem means radius is relative to the root font size
+													there are other alternatives like %, px, em, and vw */
 	position: absolute;
-	bottom: 0.5%;
-	left: 20%;
+	bottom: 0.5%; 
+	left: 20%; /* since width is 60%, left is 20% to center jar; right is 20% */
 	opacity: 0.5;
 	z-index: 1;
 }
@@ -76,7 +79,7 @@ h1 {
 	height: 5%;
 	background: #3a241d;
 	position: absolute;
-	border-radius: 0 0 1rem 1rem;
+	border-radius: 0 0 1rem 1rem; 
 	bottom: 1%;
 	left: 20%;
 	opacity: 0.7;
@@ -101,4 +104,6 @@ h1 {
 	position: absolute;
 	bottom: 45%;
 	left: 5%;
-} */
+}
+
+/* see README.md for transitions and animations */

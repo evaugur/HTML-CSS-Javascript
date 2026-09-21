@@ -1,31 +1,228 @@
-/* inside style.css */
-.highlight {
-  background-color: yellow;
-}
-/* Define the error class with styling */
-.error {
-  border: 2px solid red;
-  background-color: #ffe6e6;
-  animation: shake 0.5s;
-  animation-iteration-count: 3;
+:root {
+  --background-color: #00072D;
+  --background-accent: #0A2472;
+  --container-color: #048BA8;
+  --container-shadow: rgba(3, 35, 58, 0.32);
+  --panel-glow: rgba(255, 255, 255, 0.08);
+  --main-text-color: #FCFCFC;
+  --muted-text-color: #dfeaf3;
+  --text-box-text-color: #0A2472;
+  --button-color: #0A2472;
+  --button-hover-color: #00072D;
+  --button-text-color: #FCFCFC;
+  --highlight-color: #FFFFFF;
+  --highlight-bg: rgba(255, 255, 255, 0.15);
+  --error-color: #ff6b6b;
+  --error-bg: #ffe6e6;
 }
 
-/* Define the shake animation */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Inter var", helvetica, arial, sans-serif;
+  text-align: center;
+  color: var(--main-text-color);
+  background:
+    radial-gradient(circle at top, rgba(4, 139, 168, 0.22), transparent 30%),
+    linear-gradient(160deg, var(--background-color) 0%, var(--background-accent) 100%);
+}
+
+#page {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem 1rem;
+}
+
+.app-shell {
+  width: min(100%, 760px);
+}
+
+h1 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--main-text-color);
+  text-shadow: 0 0 18px rgba(4, 139, 168, 0.5);
+}
+
+#instructions {
+  color: var(--muted-text-color);
+  text-align: center;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  margin: 0 auto 1.25rem;
+  max-width: 680px;
+}
+
+#instructions p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+#main-container {
+  width: min(100%, 650px);
+  background: linear-gradient(135deg, rgba(4, 139, 168, 0.96) 0%, rgba(5, 120, 155, 0.96) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 1.25rem;
+  margin: 0 auto;
+  padding: clamp(1.4rem, 3vw, 2.25rem);
+  box-shadow: 0 20px 40px var(--container-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.1rem;
+}
+
+#quote {
+  min-height: 140px;
+  margin: 0;
+  padding: 1.35rem 1rem;
+  border-radius: 1rem;
+  background: rgba(0, 7, 45, 0.12);
+  border: 1px solid var(--panel-glow);
+  color: var(--main-text-color);
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+  font-family: "Georgia", "Times New Roman", serif;
+  text-align: left;
+}
+
+#quote span {
+  display: inline-block;
+  padding: 0.08rem 0.12rem;
+  border-radius: 0.35rem;
+  transition: all 0.2s ease;
+}
+
+#message {
+  min-height: 1.4rem;
+  margin: 0;
+  color: var(--main-text-color);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.controls {
+  display: flex;
+  gap: 0.85rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#typed-value {
+  flex: 1 1 280px;
+  min-width: 0;
+  color: var(--text-box-text-color);
+  font-size: clamp(1.05rem, 2vw, 1.4rem);
+  text-align: center;
+  padding: 0.9rem 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 0.8rem;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: inset 0 2px 6px rgba(0, 7, 45, 0.08);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+#typed-value:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.12);
+}
+
+.button {
+  background-color: var(--button-color);
+  border: 1px solid transparent;
+  border-radius: 0.8rem;
+  box-sizing: border-box;
+  color: var(--button-text-color);
+  cursor: pointer;
+  flex: 0 0 auto;
+  font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+  padding: 0.85rem 1.25rem;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 18px rgba(0, 7, 45, 0.2);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button:hover {
+  background-color: var(--button-hover-color);
+  transform: translateY(-1px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.18);
+}
+
+.highlight {
+  color: var(--highlight-color);
+  font-weight: 700;
+  background: var(--highlight-bg);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+
+.past-text {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
+.error {
+  border: 2px solid var(--error-color);
+  background-color: var(--error-bg);
+  animation: shake 0.4s ease-in-out 2;
+}
+
+@media (max-width: 540px) {
+  #main-container {
+    padding: 1.2rem;
+  }
+
+  .controls {
+    flex-direction: column;
+  }
+
+  #typed-value,
+  .button {
+    width: 100%;
+  }
+}
+
 @keyframes shake {
   0% {
     transform: translateX(0);
   }
 
   25% {
-    transform: translateX(-5px);
+    transform: translateX(-6px);
   }
 
   50% {
-    transform: translateX(5px);
+    transform: translateX(6px);
   }
 
   75% {
-    transform: translateX(-5px);
+    transform: translateX(-6px);
   }
 
   100% {

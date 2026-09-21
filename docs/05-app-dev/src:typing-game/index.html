@@ -2,25 +2,35 @@
 <html>
   <head>
     <title>Typing game</title>
+    <meta charset="utf-8" />
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
   </head>
 
   <body>
-    <h1>Typing game!</h1>
-    <p>
-      Practice your typing skills with a quote from Sherlock Holmes. Click
-      **start** to begin!
-    </p>
-    <p id="quote"></p>
-    <!-- This will display our quote -->
-    <p id="message"></p>
-    <!-- This will display any status messages -->
-    <div>
-      <input type="text" aria-label="current word" id="typed-value" />
-      <!-- The textbox for typing -->
-      <button type="button" id="start">Start</button>
-      <!-- To start the game -->
+    <div id="page">
+      <div class="app-shell">
+        <h1>Typing game!</h1>
+        <div id="instructions">
+          <p>
+            Practice your typing skills with quotes from twenty one pilots.
+            Click "Start" to begin!
+          </p>
+        </div>
+        <div id="main-container">
+          <p id="quote" aria-live="polite"></p>
+          <p id="message" aria-live="assertive"></p>
+          <!-- This will display any status messages -->
+          <div class="controls">
+            <input type="text" aria-label="current word" id="typed-value" />
+            <!-- The textbox for typing -->
+            <button class="button" id="start-button" role="button">
+              Start
+            </button>
+            <!-- To start the game -->
+          </div>
+        </div>
+      </div>
     </div>
-    <script src="script.js"></script>
   </body>
 </html>
